@@ -2,13 +2,10 @@
 const express = require('express');
 const path = require('path');
 const controller = require('./controller');
-const dbConnection = require('./database/db_connection');
 const dbbuild = require('./database/dbbuild');
 
 // Connect to DB
-dbConnection();
 dbbuild();
-
 const app = express();
 
 app.disable('x-powered-by');
