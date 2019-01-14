@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_LIST, NEW_LIST } from './types';
+import { GET_LIST, NEW_LIST, DELETE_LIST } from './types';
 
 export const getList = () => (dispatch) => {
   axios
@@ -19,4 +19,12 @@ export const addNewItem = data => (dispatch) => {
     type: NEW_LIST,
     payload: result.data,
   }));
+};
+
+export const deleteItem = data => (dispatch) => {
+  const { id } = data;
+  axios.delete(`/delete-Item/${id}`).then(() => dispatch({
+    type: DELETE_LIST,
+    payload: id,
+  })).catch(err => console.log(err));
 };
