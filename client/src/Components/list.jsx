@@ -3,12 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getList } from '../Action/listAction';
 
-export class list extends Component {
+class list extends Component {
   state = {};
 
   componentWillMount() {
     const { getList: GetList } = this.props;
     GetList();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.newPost) {
+      const { items } = this.props;
+      items.unshift(nextProps.newPost);
+    }
   }
 
   render() {
@@ -29,9 +36,11 @@ export class list extends Component {
 list.propTypes = {
   getList: PropTypes.func.isRequired,
   items: PropTypes.instanceOf(Array).isRequired,
+  newPost: PropTypes.instanceOf(Object).isRequired,
 };
 const mapStateToProps = state => ({
   items: state.items.items,
+  newPost: state.items.item,
 });
 
 export default connect(
