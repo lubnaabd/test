@@ -1,7 +1,8 @@
-import { GET_LIST } from '../Action/types';
+import { GET_LIST, NEW_LIST } from '../Action/types';
 
 const initialState = {
   items: [],
+  item: {},
 };
 
 export default function (state = initialState, action) {
@@ -11,6 +12,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         items: payload,
+      };
+    case NEW_LIST:
+      return {
+        ...state,
+        item: payload,
       };
     default:
       return state;
