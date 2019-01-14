@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_LIST } from './types';
+import { GET_LIST, NEW_LIST } from './types';
 
 export const getList = () => (dispatch) => {
   axios
@@ -11,4 +11,12 @@ export const getList = () => (dispatch) => {
     .catch((error) => {
       console.log(error.message);
     });
+};
+
+
+export const addNewItem = data => (dispatch) => {
+  axios.post('/post-Item', data).then(result => dispatch({
+    type: NEW_LIST,
+    payload: result.data,
+  }));
 };
