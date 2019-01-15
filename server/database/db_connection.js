@@ -4,15 +4,15 @@ require('env2')('./config.env');
 
 
 const dbConnection = () => {
-  const { mongoURI } = process.env;
+  const { MONGOURI } = process.env;
 
   mongoose.connect(
-    mongoURI,
+    MONGOURI,
     { useNewUrlParser: true },
   ).then(() => {
     console.log('Connected to Database');
   }).catch((err) => {
-    console.log('Not Connected to Database ERROR! ', err);
+    console.log('Not Connected to Database ', err);
   });
 };
 

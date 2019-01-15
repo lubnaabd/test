@@ -12,12 +12,12 @@ class list extends Component {
     GetList();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.newPost) {
-      const { items } = this.props;
-      items.unshift(nextProps.newPost);
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.newPost) {
+  //     const { items } = this.props;
+  //     items.unshift(nextProps.newPost);
+  //   }
+  // }
 
 
 onDelete=(id) => {
@@ -46,7 +46,7 @@ list.propTypes = {
   getList: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
   items: PropTypes.instanceOf(Array).isRequired,
-  newPost: PropTypes.instanceOf(Object).isRequired,
+  // newPost: PropTypes.instanceOf(Object).isRequired,
 };
 const mapStateToProps = state => ({
   items: state.items.items,
