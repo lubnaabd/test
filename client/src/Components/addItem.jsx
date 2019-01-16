@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNewItem } from '../Action/listAction';
+import { Input, TextArea, Button } from './StyledComponents';
 
 class addItem extends Component {
   state = {
@@ -27,14 +28,14 @@ render() {
       <div>
         <h4>Title:</h4>
         <br />
-        <input type="text" name="title" onChange={this.onChange} />
+        <Input type="text" name="title" onChange={this.onChange} />
       </div>
       <div>
         <h4>discripation:</h4>
         <br />
-        <textarea type="text" name="discripation" onChange={this.onChange} />
+        <TextArea type="text" name="discripation" onChange={this.onChange} />
         <br />
-        <button type="button" onClick={this.onClick}>ADD</button>
+        <Button type="submit" as="button" onClick={this.onClick}>ADD</Button>
       </div>
     </div>
   );
