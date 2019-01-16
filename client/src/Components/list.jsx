@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getList, deleteItem } from '../Action/listAction';
-
+import { Button, List, Item } from './StyledComponents';
 
 class list extends Component {
   state = {};
@@ -19,28 +19,39 @@ class list extends Component {
   //   }
   // }
 
+  onDelete = (id) => {
+    const { deleteItem: DeleteItem } = this.props;
+    const data = { id };
+    DeleteItem(data);
+  };
 
-onDelete=(id) => {
-  const { deleteItem: DeleteItem } = this.props;
-  const data = { id };
-  DeleteItem(data);
-}
-
-render() {
-  const { items } = this.props;
-  return (
-    <div>
-      {items
+  render() {
+    const { items } = this.props;
+    return (
+      <List>
+        {items
           && items.map(({ _id, title, discripation }) => (
-            <div key={_id}>
-              <h3>{title}</h3>
-              <p>{discripation}</p>
-              <button type="button" onClick={() => this.onDelete(_id)}> Delete</button>
-            </div>
+            <Item key={_id}>
+              <hr />
+              <h3>
+                {title}
+              </h3>
+              <p>
+                {discripation}
+              </p>
+              <Button
+                type="submit"
+                as="button"
+                onClick={() => this.onDelete(_id)}
+                delete
+              >
+                Delete
+              </Button>
+            </Item>
           ))}
-    </div>
-  );
-}
+      </List>
+    );
+  }
 }
 list.propTypes = {
   getList: PropTypes.func.isRequired,
